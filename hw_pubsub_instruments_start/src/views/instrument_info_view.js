@@ -19,20 +19,6 @@ InstrumentInfoView.prototype.render = function (family) {
   this.paragraphTitle('Instruments include');
   this.listItems(family.instruments);
 
-
-  // const listTitle = document.createElement('h3');
-  // listTitle.textContent = 'Instruments include:';
-  // this.container.appendChild(listTitle);
-
-
-  // const listOfInstruments = document.createElement('ul');
-  // family.instruments.forEach((instrument,index) => {
-  //   const liItem = document.createElement('li');
-  //   liItem.textContent = instrument;
-  //   listOfInstruments.appendChild(liItem);
-  // });
-  // this.container.appendChild(listOfInstruments);
-
 };
 
 InstrumentInfoView.prototype.paragraphTitle = function(parTitle){
