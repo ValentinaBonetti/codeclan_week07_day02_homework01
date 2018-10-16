@@ -12,28 +12,53 @@ InstrumentInfoView.prototype.bindEvents = function () {
 };
 
 InstrumentInfoView.prototype.render = function (family) {
-  const paragraphTitle = document.createElement('h2');
-  paragraphTitle.textContent = family.name;
-
-  const infoParagraph = document.createElement('p');
-  infoParagraph.textContent = `The ${family.name} family. ${family.description}`;
-
-  const listTitle = document.createElement('h3');
-  listTitle.textContent = 'Instruments include:';
-
-  const listOfInstruments = document.createElement('ul');
-  family.instruments.forEach((instrument,index) => {
-    const liItem = document.createElement('li');
-    liItem.textContent = instrument;
-    listOfInstruments.appendChild(liItem);
-  });
 
   this.container.innerHTML = '';
-  this.container.appendChild(paragraphTitle);
-  this.container.appendChild(infoParagraph);
-  this.container.appendChild(listTitle);
-  this.container.appendChild(listOfInstruments);
+  this.paragraphTitle(family.name);
+  this.infoParagraph(family.description);
+  this.paragraphTitle('Instruments include');
+  this.listItems(family.instruments);
+
+
+  // const listTitle = document.createElement('h3');
+  // listTitle.textContent = 'Instruments include:';
+  // this.container.appendChild(listTitle);
+
+
+  // const listOfInstruments = document.createElement('ul');
+  // family.instruments.forEach((instrument,index) => {
+  //   const liItem = document.createElement('li');
+  //   liItem.textContent = instrument;
+  //   listOfInstruments.appendChild(liItem);
+  // });
+  // this.container.appendChild(listOfInstruments);
 
 };
+
+InstrumentInfoView.prototype.paragraphTitle = function(parTitle){
+  const title = document.createElement('h2');
+  title.textContent = parTitle;
+  title.id = parTitle.split(" ")[0];
+  console.log("title id:",title.id);
+  this.container.appendChild(title);
+};
+
+InstrumentInfoView.prototype.infoParagraph = function(description){
+  const paragraph = document.createElement('p');
+  paragraph.textContent = description;
+  this.container.appendChild(paragraph);
+};
+
+InstrumentInfoView.prototype.listItems = function (items) {
+  const listOfItems = document.createElement('ul');
+  items.forEach((item,index) => {
+    const liItem = document.createElement('li');
+    liItem.textContent = item;
+    listOfItems.appendChild(liItem);
+  });
+  this.container.appendChild(listOfItems);
+
+};
+
 
 module.exports = InstrumentInfoView;
