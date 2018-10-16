@@ -12,9 +12,12 @@ InstrumentInfoView.prototype.bindEvents = function () {
 };
 
 InstrumentInfoView.prototype.render = function (family) {
+  const paragraphTitle = document.createElement('h2');
+  paragraphTitle.textContent = family.name;
   const infoParagraph = document.createElement('p');
   infoParagraph.textContent = `The ${family.name} family: ${family.description}`;
   this.container.innerHTML = '';
+  this.container.appendChild(paragraphTitle);
   this.container.appendChild(infoParagraph);
 };
 
